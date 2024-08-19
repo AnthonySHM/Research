@@ -170,7 +170,7 @@ The result of the query, an array of objects representing the products, is assig
 return { products };
 ```
 Returns an object with a single property, products, containing the fetched product data. This data will be available to the client-side component as part of the page data.
-## CONCLUSION
+
 This code defines a server-side load function for a SvelteKit page. It fetches product data from a SQLite database using the locals.db object and returns the fetched products as part of the page data. This data can then be used in the corresponding page component to display the products to the user.
 
 ### Key Points:
