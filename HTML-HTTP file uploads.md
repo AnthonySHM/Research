@@ -2,9 +2,31 @@
 This document aims to provide a comprehensive overview of HTML/HTTP file uploads, covering the fundamental concepts, processes, and considerations involved in handling file uploads on web applications
 
 let's  see how you can upload images to your Svelte application using HTML forms and HTTP requests. We'll break down the process into simple steps, using easy-to-understand language.
+In your svelte project, where you want to upload files do the following;
 
-## 1. Building the Upload Form:
+### +page.svelte file
+```HTML
+<form
+    action="?/upload"
+    method="post"
+    enctype="multipart/form-data"
+  >
+  <div class="group">
+    <label for="file">Upload your file</label>
+    <input
+      type="file"
+      id="file"
+      name="fileToUpload"
+      accept=".jpg, .jpeg, .png, .webp"
+      required
+    />
+  </div>
 
+  <button type="submit">Submit</button>
+</form>
+
+```
+## Building the Upload Form:
 #### Form Element: 
 The form tag is the foundation for file uploads. It provides a way to collect data from the user and send it to the server.
 #### Action Attribute: 
@@ -14,7 +36,7 @@ The method attribute defines how the data is sent. method="post" indicates a POS
 #### Enctype Attribute: 
 The enctype attribute tells the browser how to format the form data. enctype="multipart/form-data" is crucial for file uploads, as it allows multiple parts (including the file) to be sent.
 
-## 2. Creating a File Input:
+## Creating a File Input:
 
 #### Input Element: 
 The <input> tag of type file is used to create a file selection field on the web page. Users can click this button to browse their computer's file system and choose an image to upload.
@@ -27,9 +49,33 @@ The accept attribute allows you to restrict the types of files that can be uploa
 #### Required Attribute: 
 The required attribute ensures the user must select a file before submitting the form, preventing empty uploads.
 
-## 3. Handling the Upload on the Server (SvelteKit Server-Side Code):
+## Handling the Upload on the Server (SvelteKit Server-Side Code):
 
 #### +page.server.ts File: 
+```Typescript
+import { writeFile } from "fs/promises";
+import type { Actions } from "./$types";
+
+export const actions = {
+  upload: async ({ request }) => {
+    const formData = Object.fromEntries(await request.formData());
+
+
+
+    const { fileToUpload } = formData as { fileToUpload: File };
+
+    writeFile(
+      `static/${fileToUpload.name}`,
+      Buffer.from(await fileToUpload.arrayBuffer())
+    );
+
+    return {
+      success: true,
+      fileName: fileToUpload.name,
+    };
+  },
+} satisfies Actions;
+```
 This file contains the code that runs on the server when the form is submitted.
 #### import { writeFile } from "fs/promises": 
 This imports the writeFile function from the fs/promises module, which allows us to write the uploaded file to the server's file system.
