@@ -192,13 +192,13 @@ export let data : PageServerData;
 #### import type { PageServerData } from "./$types";
 This line imports the PageServerData type from the $types module. This type defines the shape of the data that will be passed to the component from the server.
 ### Export Statement:
-####export let data : PageServerData; 
+#### export let data : PageServerData; 
 This line declares an exported variable named data of type PageServerData. This variable will be populated with the data returned from the +page.server.ts file.
 ### How It Works
 The +page.server.ts file fetches data from the database and returns it as an object.<br>
 SvelteKit automatically passes this object to the +page.svelte component as the data prop.<br>
 The data prop in the +page.svelte file is then available for use within the component's template.<br>
-Example Usage
+### Example Usage
 ```HTML
 <h1>Products</h1>
 <table class="table table-bodered">
