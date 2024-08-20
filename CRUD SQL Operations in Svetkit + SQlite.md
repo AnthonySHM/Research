@@ -120,7 +120,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 ```
 This file fetches all products from the database and returns them as page data.
-Creating a New Product
+
+## Creating a New Product
 Let's create a page for creating new products.
 
 ### src/routes/product/create/+page.svelte:
@@ -218,6 +219,19 @@ Remember to replace the placeholder comments with the actual database operations
 # COMPONENTS SUMMARY
 Below is the list of components with brief explanation on how they play part in this app:
 
+### src/hooks.server.ts:
+
+This file defines a server-side hook to provide the database connection to all routes.<br>
+It uses sqlite3 and open to establish a connection to the mydatabase.db file.<br>
+The handle function injects the database connection into the event.locals object, making it accessible throughout the application.<br>
+Overall, these code snippets demonstrate a well-structured Svelte app that effectively uses SQLite for CRUD operations on product data.
+
+### src/app.d.ts:
+
+This file defines global types used throughout the application.<br>
+It defines the App.Locals interface, which provides access to the SQLite database instance as db.<br>
+It defines the Product interface, specifying the expected structure of product data (rowid, name, price).
+
 ### src/lib/ProductForm.svelte:
 
 This component renders a form for creating or updating a product.<br>
@@ -225,6 +239,13 @@ It takes a product prop containing the product details (name and price).<br>
 The form uses a POST method to submit data based on the action ("create" or "update").<br>
 The action URL includes the product's rowid for updates or omits it for creation.<br>
 Input fields are bound to the product's properties for data manipulation. 
+
+### src/lib/DeleteButton.svelte:
+
+This component represents a button used to delete a product.<br>
+It takes a product prop containing information about the product to be deleted.<br>
+The button uses a form element with a POST method to submit a delete request.<br>
+The action URL includes the product's rowid for identification.
 
 ### src/routes/+page.svelte:
 
@@ -260,26 +281,6 @@ This server-side script loads data for the product edit page.<br>
 It retrieves a specific product based on the provided ID using SELECT with * from the products table.<br>
 It populates the data.product object for use in the Svelte component.<br>
 Additionally, it defines actions (create, update, delete) for handling form submissions.
-
-### src/app.d.ts:
-
-This file defines global types used throughout the application.<br>
-It defines the App.Locals interface, which provides access to the SQLite database instance as db.<br>
-It defines the Product interface, specifying the expected structure of product data (rowid, name, price).
-
-### src/hooks.server.ts:
-
-This file defines a server-side hook to provide the database connection to all routes.<br>
-It uses sqlite3 and open to establish a connection to the mydatabase.db file.<br>
-The handle function injects the database connection into the event.locals object, making it accessible throughout the application.<br>
-Overall, these code snippets demonstrate a well-structured Svelte app that effectively uses SQLite for CRUD operations on product data.
-
-### src/lib/DeleteButton.svelte:
-
-This component represents a button used to delete a product.<br>
-It takes a product prop containing information about the product to be deleted.<br>
-The button uses a form element with a POST method to submit a delete request.<br>
-The action URL includes the product's rowid for identification.
 
 ## Why Delete is Different
 Irreversibility: Deleting data is typically a destructive action, and there's often no way to undo it without additional mechanisms like soft deletes.<br>
