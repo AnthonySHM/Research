@@ -104,7 +104,7 @@ Error Handling Mechanisms: Implement robust error handling on both the server an
 By understanding the intricacies of server-client communication, developers can create efficient and resilient web applications.
 
 # DEVELOPMENT TRENDS
-Multi-Page Applications (MPAs)
+## Multi-Page Applications (MPAs)
 MPAs are traditional web applications where each page is a separate HTML file.<br> Navigation involves loading entire new pages.
 
 Example: While not explicitly used in our Svelte application, MPAs are characterized by multiple HTML files, each representing a different page.
