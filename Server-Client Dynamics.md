@@ -3,14 +3,13 @@
 ## Understanding the Building Blocks
 To grasp the intricacies of server-side and client-side development, it's essential to familiarize oneself with fundamental concepts that underpin these domains.
 The modern web is a complex interplay of technologies working in tandem to deliver engaging user experiences. At the core of this ecosystem lies the fundamental distinction between server-side and client-side development.
+
 Server-side code runs on a remote computer (server) that hosts the website. It processes requests from clients, manipulates data, and generates responses.
 Client-side code runs on the user's device (client) within the web browser. It interacts with the user, dynamically updates the page, and communicates with the server when necessary.
 
 ### Defining Key Terms
-#### Server-side: 
-The computational aspect of a web application residing on a remote server.<br>
-#### Client-side: 
-The interface and interactions occurring on the user's device.<br>
+Server-side: The computational aspect of a web application residing on a remote server.<br>
+Client-side: The interface and interactions occurring on the user's device.<br>
 #### Frontend: 
 The user interface of an application, typically built with HTML, CSS, and JavaScript. In our Svelte application, the components like ProductForm.svelte and DeleteButton.svelte contribute to the frontend.<br>
 #### Backend: 
