@@ -1,32 +1,27 @@
 # INTRODUCTION
-## Understanding the Digital Landscape
-The modern web is a complex interplay of technologies working in tandem to deliver engaging user experiences. At the core of this ecosystem lies the fundamental distinction between server-side and client-side development.
-
-### Defining Key Terms
-Server-side: The computational aspect of a web application residing on a remote server.<br>
-Client-side: The interface and interactions occurring on the user's device.<br>
-Frontend: The user-facing part of an application.<br>
-Backend: The server-side logic and data management.<br>
 
 ## Understanding the Building Blocks
 To grasp the intricacies of server-side and client-side development, it's essential to familiarize oneself with fundamental concepts that underpin these domains.
+The modern web is a complex interplay of technologies working in tandem to deliver engaging user experiences. At the core of this ecosystem lies the fundamental distinction between server-side and client-side development.
+Server-side code runs on a remote computer (server) that hosts the website. It processes requests from clients, manipulates data, and generates responses.
+Client-side code runs on the user's device (client) within the web browser. It interacts with the user, dynamically updates the page, and communicates with the server when necessary.
 
-### Frontend vs. Backend
-Frontend: The user interface of an application, encompassing elements like HTML, CSS, and JavaScript. It focuses on creating a visually appealing and interactive experience for users.<br>
-Backend: The server-side of an application, handling data storage, retrieval, logic, and communication with the frontend. It operates behind the scenes to ensure the application functions correctly.<br>
+### Defining Key Terms
+#### Server-side: 
+The computational aspect of a web application residing on a remote server.<br>
+#### Client-side: 
+The interface and interactions occurring on the user's device.<br>
+#### Frontend: 
+The user interface of an application, typically built with HTML, CSS, and JavaScript. In our Svelte application, the components like ProductForm.svelte and DeleteButton.svelte contribute to the frontend.<br>
+#### Backend: 
+The server-side of an application, handling data storage, logic, and communication with the frontend. Our SQLite database and server-side routes represent the backend.<br>
+#### API (Application Programming Interface): 
+A set of definitions and protocols for building and integrating application software. APIs allow different software components to communicate with each other.<br>   
+#### REST (Representational State Transfer): 
+An architectural style for designing networked applications. It's often used for building web APIs. Our backend interacts with the frontend through a RESTful API.<br>
+#### JSON (JavaScript Object Notation): 
+A lightweight data-interchange format. It's commonly used for transmitting data between the server and client.
 
-## APIs and REST
-### API (Application Programming Interface) 
-A set of definitions and protocols for building and integrating application software. It acts as a bridge between different software components.<br>   
-### REST (Representational State Transfer) 
-An architectural style for designing networked applications. It emphasizes simplicity, scalability, and modifiability. Many modern APIs adhere to REST principles.<br>
-### JSON (JavaScript Object Notation) 
-A lightweight data-interchange format used for transmitting data between the server and client. Its human-readable structure makes it a popular choice for APIs.
-### Isomorphic JavaScript
-Code that can run seamlessly both on the server and the client. This approach can improve performance and code maintainability.
-### Hydration
-The process of transforming a statically rendered page (often generated on the server) into an interactive client-side application. This enhances user experience and performance.
-By understanding these core concepts, we lay the groundwork for exploring the nuances of server-side and client-side development in greater detail.
 
 # SERVER-SIDE DEVELOPMENT 
 The Backbone of Web Applications. The server side is the powerhouse behind web applications. It handles data processing, storage, and logic, providing the foundation for dynamic and interactive experiences.
@@ -36,6 +31,11 @@ Data Management: Storing, retrieving, and manipulating data efficiently.<br>
 Business Logic: Implementing the application's core functionalities and rules.<br>
 Security: Protecting sensitive data and preventing unauthorized access.<br>
 Server-Side Rendering (SSR): Generating HTML on the server for improved SEO and initial page load performance.<br>
+
+### Server-Side Rendering (SSR)
+SSR is a technique where the server generates the complete HTML of a page and sends it to the client. This is in contrast to client-side rendering (CSR), where the initial HTML is minimal and JavaScript is used to build the page on the client side.
+
+Example: In our Svelte application, the src/routes/+page.server.ts file contains server-side code. It fetches product data from the SQLite database and returns it to the client. This data is then used by the src/routes/+page.svelte component to render the product list.
 
 ### Key Technologies
 Programming Languages: Node.js, Python (Django, Flask), Ruby on Rails, Java (Spring), PHP (Laravel)<br>
@@ -61,6 +61,11 @@ User Experience (UX): Enhancing user satisfaction through intuitive interactions
 Data Display: Presenting information retrieved from the server in a clear and informative manner.<br>
 User Input Handling: Processing user actions and sending data to the server.<br>
 Dynamic Updates: Modifying the page content without full reloads.
+
+### Client-Side Rendering (CSR)
+CSR involves sending a minimal HTML structure to the client, which is then dynamically updated using JavaScript. This approach is common in modern web applications for creating interactive user experiences.
+
+Example: The Svelte components like ProductForm.svelte and DeleteButton.svelte primarily contain client-side code. They handle user interactions, update the UI, and trigger actions like creating, updating, or deleting products.
 
 ### Key Technologies
 HTML (HyperText Markup Language): Defines the structure of a webpage.<br>
@@ -100,7 +105,12 @@ Status Codes: HTTP status codes provide information about the outcome of a reque
 Error Handling Mechanisms: Implement robust error handling on both the server and client to provide informative feedback to users.<br>
 By understanding the intricacies of server-client communication, developers can create efficient and resilient web applications.
 
-# MODERN DEVELOPMENT TRENDS
+# DEVELOPMENT TRENDS
+Multi-Page Applications (MPAs)
+MPAs are traditional web applications where each page is a separate HTML file.<br> Navigation involves loading entire new pages.
+
+Example: While not explicitly used in our Svelte application, MPAs are characterized by multiple HTML files, each representing a different page.
+
 The web development landscape is in constant evolution. To stay competitive, developers must adapt to emerging trends and technologies.
 
 ## Single Page Applications (SPAs)
